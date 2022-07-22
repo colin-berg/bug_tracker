@@ -1,0 +1,58 @@
+<h3>Create a Ticket</h3>
+<div class="row">
+    <form action="/tickets" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title">
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    <option value="unassigned" selected>Unassigned</option>
+                    <option value="in-progress">In-Progress</option>
+                    <option value="complete">Complete</option>
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="team" name="team">
+                    <option value="engineering" selected>Engineering</option>
+                    <option value="product">Product</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+                <label for="team">Team</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="date" id="today" name="dateDue" min="2022-07-15" max="2100-12-31" required>
+                <label for="dateDue">Due Date</label>
+                <script>
+                    document.getElementById('today').value = moment().format('YYYY-MM-DD');
+                </script>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="input-field">
+                <h6>Describe your issue:</h6>
+                <textarea id="body" name="body"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn red">Cancel</a>
+        </div>
+
+
+    </form>
+</div>

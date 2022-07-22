@@ -1,0 +1,57 @@
+<h3>Edit Ticket</h3>
+<div class="row">
+    <form action="/tickets/{{ticket._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title" value="{{ticket.title}}">
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    {{#select ticket.status}}
+                    <option value="unassigned" selected>Unassigned</option>
+                    <option value="in-progress">In-Progress</option>
+                    <option value="complete">Complete</option>
+                    {{/select}}
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="team" name="team">
+                    <option value="engineering" selected>Engineering</option>
+                    <option value="product">Product</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+                <label for="team">Team</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="date" id="dateDue" name="dateDue" value="{{ticket.dateDue}}">
+                <label for="dateDue">Due Date</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <h6>Describe your issue:</h6>
+                <textarea id="body" name="body">{{ticket.body}}</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+
+
+    </form>
+</div>

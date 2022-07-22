@@ -1,0 +1,52 @@
+<h6>Dashboard</h6>
+<h3>Welcome {{name}}</h3>
+<p>Here are your tickets: </p>
+{{#if tickets}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Date Due</th>
+                <th>Status</th>
+                <th>Team</th>
+        
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each tickets}}
+                <tr>
+                    {{!-- remove edit tag below if you just want a view  --}}
+                    <td><a href="/tickets/{{_id}}">{{title}}</a></td>
+                    <td>{{ formatDate createdAt 'MMM Do YYYY, h:mm:ss a'}}</td>
+                    <td>{{ formatDate dateDue 'MMM Do YYYY'}}</td>
+                    <td><span class="dash-status">{{status}}</span></td>
+                    <td>{{team}}</td>
+                    <td>
+                        <a href="/tickets/edit/{{_id}}" class="btn btn-float blue">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        
+                    </td>
+                    <td>
+                        <form action="/tickets/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn red">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+
+{{else}}
+<p>You have not created any tickets!</p>
+
+
+{{/if}}

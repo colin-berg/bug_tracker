@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col s12 m8">
+        <h3>{{ticket.title}}
+            <small>{{{editIcon ticket._id false}}}</small>
+        </h3>
+        <div class="card ticket">
+            <div class="card-content">
+                <span class="card-title">{{formatDate date 'MMM Do YYYY, h:mm:ss a'}}</span>
+                {{{ticket.body}}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m4">
+        <div class="card center-align">
+            <div class="card-content">
+                <span class="card-title">{{ticket.user.displayName}}</span>
+                <img src="{{ticket.user.image}}" class="circle responsive-img img-small">
+            </div>
+            <div class="card-action">
+                <a href="/tickets/user/{{ticket.user._id}}">More From {{ticket.user.firstName}}</a>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
